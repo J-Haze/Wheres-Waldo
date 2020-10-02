@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import * as firebase from 'firebase';
 
 var firebaseConfig = {
   apiKey: "AIzaSyDmPVWlnNYu82nh4vhq2hMqqmR7mKHAmRc",
@@ -15,7 +14,7 @@ var firebaseConfig = {
   // appId: "APP_ID",
   // measurementId: "G-MEASUREMENT_ID",
 };
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
 ReactDOM.render(
   <React.StrictMode>

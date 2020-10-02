@@ -15,7 +15,7 @@ var firebaseConfig = {
   // appId: "APP_ID",
   // measurementId: "G-MEASUREMENT_ID",
 };
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
 ReactDOM.render(
   <React.StrictMode>
