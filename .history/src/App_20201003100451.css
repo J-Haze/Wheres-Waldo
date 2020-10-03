@@ -8,7 +8,7 @@ body {
 
 #header{
     height: 60px;
-    /* background-color:rgb(55, 55, 232); */
+    background-color:rgb(55, 55, 232);
     color: whitesmoke;
     border: 1px solid white;
 }
@@ -50,32 +50,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30px;
-    width: 100px;
-    border: rgb(55, 55, 232);
+}
+
+#menu{
+
+    margin-right: auto;
 }
 
 #leaderboard:hover{
     cursor: pointer;
     border: 1px solid white;
-    
-}
-
-#menu{
-    margin-right: auto;
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    width: 100px;
-    border:rgb(55, 55, 232);
-}
-
-#menu:hover{
-    cursor: pointer;
-    border: 1px solid white;
-    
 }
 
 .photo-container{
@@ -106,48 +90,4 @@ body {
     border: 3px solid red;
 }
 
-/* Leader Modal */
-.modal{
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* min-width: 600px; */
-    height: 100vh;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-  }
-  
-  .modal-content{
-    display: flex;
-    flex-direction: column;
-    background-color: #fefefe;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1vh;
-    padding: 30px;
-    padding-top: 0px;
-    border: 1px solid #888;
-    width: 600px;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    margin-top: 40px;
-  }
 
-  .close{
-    color: #aaa;
-    float: right;
-    margin-left: 100%;
-    font-size: 28px;
-    height: 10px;
-    font-weight: bold;
-  }
-  
-  .close:hover, .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }

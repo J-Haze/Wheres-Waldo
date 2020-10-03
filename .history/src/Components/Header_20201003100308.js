@@ -11,9 +11,9 @@ function Header(props) {
                 <div id="title">Where's Waldo?</div>
                 <img id="head" src={waldo} />
                 <div id="time-box">
-                    <div id="time">{props.time}</div>
+                <div id="time">{props.time}</div> 
                 </div>
-                <div id="leaderboard" onClick={() => { props.openLeaderModal() }}>Leaderboard</div>
+                <div id="leaderboard">Leaderboard</div>
                 <div id="menu">Menu</div>
             </div>
         </div>

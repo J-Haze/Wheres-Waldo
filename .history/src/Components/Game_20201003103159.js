@@ -65,18 +65,13 @@ function Game() {
         setLeaderModalOpen(false)
     }
 
-    function openLeaderModal() {
-        setLeaderModalOpen(true)
-    }
-
     return (
         <div>
             {leaderModalOpen && <LeaderModal 
-                hideLeaderModal={hideLeaderModal}
+
             />}
             <Header 
                 time={time}
-                openLeaderModal={openLeaderModal}
             />
             <Beach
                 isWaldoFound={isWaldoFound}

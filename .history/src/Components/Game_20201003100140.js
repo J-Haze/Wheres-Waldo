@@ -1,18 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../App.css";
-import Header from "./Header";
-import Beach from "./Beach";
-import LeaderModal from "./LeaderModal.js";
-
-
+import Header from "./Header"
+import Beach from "./Beach"
 import { FirebaseContext } from '../utils/firebase'
 import 'firebase/firestore'
 
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
     const [time, setTime] = useState(1);
-    const [leaderModalOpen, setLeaderModalOpen] = useState(true);
-
    
 
     const firebase = useContext(FirebaseContext)
@@ -61,22 +56,10 @@ function Game() {
         setCount(prevCount => prevCount + 1)
     }
 
-    function hideLeaderModal() {
-        setLeaderModalOpen(false)
-    }
-
-    function openLeaderModal() {
-        setLeaderModalOpen(true)
-    }
-
     return (
         <div>
-            {leaderModalOpen && <LeaderModal 
-                hideLeaderModal={hideLeaderModal}
-            />}
             <Header 
                 time={time}
-                openLeaderModal={openLeaderModal}
             />
             <Beach
                 isWaldoFound={isWaldoFound}
