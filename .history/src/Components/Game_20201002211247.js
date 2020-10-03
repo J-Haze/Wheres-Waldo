@@ -10,7 +10,7 @@ function Game() {
     const [count, setCount] = useState(0);
 
     const firebase = useContext(FirebaseContext)
-    const [list, setList] = useState(null)
+    // const [list, setList] = useState(null)
     const ref = firebase.firestore().collection(`count`)
 
     // useEffect(() => {
@@ -23,27 +23,17 @@ function Game() {
     // );
 
     useEffect(() => {
-        ref.get().then(snap => {
-            console.log(snap)
-            // console.log(snap.count)
-            if (!snap) {
-                setList(l => [])
-                console.log("didn't snap")
+        ref.get().then(snapshot => {
+            if (!snapshot) {
+                setCount(2)
             } else {
-                console.log("snapped")
-                let states = []
-                snap.forEach(data => {
-                    states.push({ key: data.id, ...data.data() })
-                })
-                setList(l => states)
-                console.log(list)
+                setCount(count.data)
+                }
             }
-        }).catch(error => {
+        ).catch(error => {
             // Handle the error
-        }
-        )
-        console.log(list)
-    }, [firebase])
+        })
+    }, [])
 
 
     function foundWaldo() {

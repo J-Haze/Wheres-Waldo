@@ -43,7 +43,7 @@ function Game() {
         }
         )
         console.log(list)
-    }, [firebase])
+    }, [])
 
 
     function foundWaldo() {

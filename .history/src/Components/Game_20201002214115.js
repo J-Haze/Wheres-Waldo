@@ -24,26 +24,23 @@ function Game() {
 
     useEffect(() => {
         ref.get().then(snap => {
-            console.log(snap)
+            // console.log(snap)
             // console.log(snap.count)
             if (!snap) {
                 setList(l => [])
-                console.log("didn't snap")
             } else {
-                console.log("snapped")
                 let states = []
                 snap.forEach(data => {
                     states.push({ key: data.id, ...data.data() })
                 })
                 setList(l => states)
-                console.log(list)
             }
         }).catch(error => {
             // Handle the error
         }
+        console.log(states.count)
         )
-        console.log(list)
-    }, [firebase])
+    }, [])
 
 
     function foundWaldo() {
