@@ -13,11 +13,11 @@ function Game() {
     const [time, setTime] = useState(1);
     const [leaderModalOpen, setLeaderModalOpen] = useState(true);
 
-
+   
 
     const firebase = useContext(FirebaseContext)
     const [list, setList] = useState(null)
-    const ref = firebase.firestore().collection(`players`)
+    const ref = firebase.firestore().collection(`count`)
     const [count, setCount] = useState(0);
 
     // useEffect(() => {
@@ -59,23 +59,22 @@ function Game() {
             } else {
                 let players = []
                 snap.forEach(player => {
-                    players.push({ key: player.id, ...player.data() })
+                    shirts.push({ key: shirt.id, ...shirt.data() })
                 })
-                setList(l => players)
+                setList(l => shirts)
             }
         }).catch(error => {
             // Handle the error
         })
-    }, [firebase])
-
-    let leaderList
+    }, [])
+    let listToDisplay
     if (list === null) {
-        leaderList = (<li>Loading leaderboard...</li>)
+        listToDisplay = (<li>Loading shirts...</li>)
     } else if (list.length === 0) {
-        leaderList = (<li>No players yet.</li>)
+        listToDisplay = (<li>No shirts found</li>)
     } else {
-        leaderList = list.map(player => {
-            return (<li key={player.key}>{player.name} {player.time}</li>)
+        listToDisplay = list.map(shirt => {
+            return (<li key={shirt.key}>{shirt.name}</li>)
         })
     }
 
@@ -98,11 +97,11 @@ function Game() {
 
     return (
         <div>
-            {leaderModalOpen && <LeaderModal
+            {leaderModalOpen && <LeaderModal 
                 hideLeaderModal={hideLeaderModal}
                 leaderList={leaderList}
             />}
-            <Header
+            <Header 
                 time={time}
                 openLeaderModal={openLeaderModal}
             />

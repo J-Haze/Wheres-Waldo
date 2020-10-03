@@ -13,7 +13,7 @@ function Game() {
     const [time, setTime] = useState(1);
     const [leaderModalOpen, setLeaderModalOpen] = useState(true);
 
-
+   
 
     const firebase = useContext(FirebaseContext)
     const [list, setList] = useState(null)
@@ -75,7 +75,7 @@ function Game() {
         leaderList = (<li>No players yet.</li>)
     } else {
         leaderList = list.map(player => {
-            return (<li key={player.key}>{player.name} {player.time}</li>)
+            return (<li key={player.key}>{player.name}</li>)
         })
     }
 
@@ -98,11 +98,11 @@ function Game() {
 
     return (
         <div>
-            {leaderModalOpen && <LeaderModal
+            {leaderModalOpen && <LeaderModal 
                 hideLeaderModal={hideLeaderModal}
                 leaderList={leaderList}
             />}
-            <Header
+            <Header 
                 time={time}
                 openLeaderModal={openLeaderModal}
             />

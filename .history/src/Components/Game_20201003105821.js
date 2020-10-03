@@ -13,11 +13,11 @@ function Game() {
     const [time, setTime] = useState(1);
     const [leaderModalOpen, setLeaderModalOpen] = useState(true);
 
-
+   
 
     const firebase = useContext(FirebaseContext)
     const [list, setList] = useState(null)
-    const ref = firebase.firestore().collection(`players`)
+    const ref = firebase.firestore().collection(`count`)
     const [count, setCount] = useState(0);
 
     // useEffect(() => {
@@ -29,55 +29,28 @@ function Game() {
     // }, []
     // );
 
-    // useEffect(() => {
-    //     ref.get().then(snap => {
-    //         console.log(snap)
-    //         // console.log(snap.count)
-    //         if (!snap) {
-    //             setList(l => [])
-    //             console.log("didn't snap")
-    //         } else {
-    //             console.log("snapped")
-    //             let states = []
-    //             snap.forEach(data => {
-    //                 states.push({ key: data.id, ...data.data() })
-    //             })
-    //             setList(l => states)
-    //             console.log(list)
-    //         }
-    //     }).catch(error => {
-    //         // Handle the error
-    //     }
-    //     )
-    //     console.log(list)
-    // }, [firebase])
-
     useEffect(() => {
         ref.get().then(snap => {
+            console.log(snap)
+            // console.log(snap.count)
             if (!snap) {
                 setList(l => [])
+                console.log("didn't snap")
             } else {
-                let players = []
-                snap.forEach(player => {
-                    players.push({ key: player.id, ...player.data() })
+                console.log("snapped")
+                let states = []
+                snap.forEach(data => {
+                    states.push({ key: data.id, ...data.data() })
                 })
-                setList(l => players)
+                setList(l => states)
+                console.log(list)
             }
         }).catch(error => {
             // Handle the error
-        })
+        }
+        )
+        console.log(list)
     }, [firebase])
-
-    let leaderList
-    if (list === null) {
-        leaderList = (<li>Loading leaderboard...</li>)
-    } else if (list.length === 0) {
-        leaderList = (<li>No players yet.</li>)
-    } else {
-        leaderList = list.map(player => {
-            return (<li key={player.key}>{player.name} {player.time}</li>)
-        })
-    }
 
 
     function foundWaldo() {
@@ -98,11 +71,10 @@ function Game() {
 
     return (
         <div>
-            {leaderModalOpen && <LeaderModal
+            {leaderModalOpen && <LeaderModal 
                 hideLeaderModal={hideLeaderModal}
-                leaderList={leaderList}
             />}
-            <Header
+            <Header 
                 time={time}
                 openLeaderModal={openLeaderModal}
             />

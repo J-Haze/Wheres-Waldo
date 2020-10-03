@@ -9,9 +9,7 @@ function LeaderModal(props) {
             <div id="leaderModal" className="modal-content" onClick={(event) => { event.stopPropagation() }}>
                 <span className="close" onClick={() => { props.hideLeaderModal() }}>&times;</span>
                 <div id="leaderboard-title"> Leaderboard: </div>
-                <div id="leader-list-container">
-                    <ol>{props.leaderList}</ol>
-                </div>
+                <
             </div>
         </div>
     )
