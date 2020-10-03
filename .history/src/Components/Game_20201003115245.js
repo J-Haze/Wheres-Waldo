@@ -3,36 +3,23 @@ import "../App.css";
 import Header from "./Header";
 import Beach from "./Beach";
 import LeaderModal from "./LeaderModal.js";
-import SubmitModal from "./SubmitModal.js";
 
 
 import { FirebaseContext } from '../utils/firebase'
 import 'firebase/firestore'
-import { set } from "date-fns";
 
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
     const [time, setTime] = useState(1);
-    const [playerName, setPlayerName] = useState("");
-    const [leaderModalOpen, setLeaderModalOpen] = useState(false);
-    const [submitModalOpen, setSubmitModalOpen] = useState(false);
-    const [update, setUpdate] = useState(false);
-
-
-    const [location, setLocation] = useState("Waldo at the Beach");
+    const [leaderModalOpen, setLeaderModalOpen] = useState(true);
 
 
 
     const firebase = useContext(FirebaseContext)
     const [list, setList] = useState(null)
-    const leaderRef = firebase.firestore().collection(`players`)
-    const query = leaderRef.orderBy("time").limit(5);
+    const ref = firebase.firestore().collection(`players`)
+    const query = ref.orderBy("name", "desc").limit(5);
     const [count, setCount] = useState(0);
-
-    let timeString = "";
-    let rounded = "";
-    let timeDec = "";
-    let beachList
 
     // useEffect(() => {
     //     const rootRef = firebase.database().ref().child('react');
@@ -79,18 +66,16 @@ function Game() {
             }
         }).catch(error => {
             // Handle the error
-            console.log("Error: Fetching Leaderboard")
         })
+    }, [firebase])
 
-
-    }, [update])
-
+    let leaderList
     if (list === null) {
-        beachList = (<li>Loading leaderboard...</li>)
+        leaderList = (<li>Loading leaderboard...</li>)
     } else if (list.length === 0) {
-        beachList = (<li>No players yet.</li>)
+        leaderList = (<li>No players yet.</li>)
     } else {
-        beachList = list.map(player => {
+        leaderList = list.map(player => {
             return (<li key={player.key}>{player.name} {player.time}</li>)
         })
     }
@@ -98,10 +83,10 @@ function Game() {
 
     function foundWaldo() {
         setIsWaldoFound(true)
-        // console.log("Found Waldo")
-        // console.log(isWaldoFound)
-        setTime(1)
-        openSubmitModal();
+        console.log("Found Waldo")
+        console.log(isWaldoFound)
+        setTime(3)
+        setCount(prevCount => prevCount + 1)
     }
 
     function hideLeaderModal() {
@@ -112,48 +97,11 @@ function Game() {
         setLeaderModalOpen(true)
     }
 
-
-    function hideSubmitModal() {
-        setSubmitModalOpen(false)
-    }
-
-    function openSubmitModal() {
-        setSubmitModalOpen(true)
-    }
-
-    const submitTime = async () => {
-        // e.preventDefault();
-
-        rounded = Math.round(time * 10) / 10;
-        timeDec = rounded.toFixed(1);
-        timeString = `${timeDec} sec`;
-
-        await leaderRef.add({
-            time: timeString,
-            name: playerName
-        });
-
-        setPlayerName("");
-        setUpdate(!update);
-        setSubmitModalOpen(false);
-
-        console.log(timeString)
-    }
-
     return (
         <div>
             {leaderModalOpen && <LeaderModal
-                location={location}
                 hideLeaderModal={hideLeaderModal}
-                beachList={beachList}
-            />}
-            {submitModalOpen && <SubmitModal
-                time={time}
-                hideSubmitModal={hideSubmitModal}
-                location={location}
-                submitTime={submitTime}
-                playerName={playerName}
-                setPlayerName={setPlayerName}
+                leaderList={leaderList}
             />}
             <Header
                 time={time}

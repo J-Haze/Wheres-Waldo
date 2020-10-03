@@ -161,20 +161,4 @@ body {
     margin-left: -20px;
 }
 
-#time-title{
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-#submit-time{
-    border: 1px solid black;
-    margin-top: 5px;
-}
-
-#submit-time:hover{
-    cursor: pointer;
-}
-
-
-
 

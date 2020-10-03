@@ -8,7 +8,6 @@ import SubmitModal from "./SubmitModal.js";
 
 import { FirebaseContext } from '../utils/firebase'
 import 'firebase/firestore'
-import { set } from "date-fns";
 
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
@@ -16,7 +15,6 @@ function Game() {
     const [playerName, setPlayerName] = useState("");
     const [leaderModalOpen, setLeaderModalOpen] = useState(false);
     const [submitModalOpen, setSubmitModalOpen] = useState(false);
-    const [update, setUpdate] = useState(false);
 
 
     const [location, setLocation] = useState("Waldo at the Beach");
@@ -32,7 +30,6 @@ function Game() {
     let timeString = "";
     let rounded = "";
     let timeDec = "";
-    let beachList
 
     // useEffect(() => {
     //     const rootRef = firebase.database().ref().child('react');
@@ -79,12 +76,10 @@ function Game() {
             }
         }).catch(error => {
             // Handle the error
-            console.log("Error: Fetching Leaderboard")
         })
+    }, [firebase])
 
-
-    }, [update])
-
+    let beachList
     if (list === null) {
         beachList = (<li>Loading leaderboard...</li>)
     } else if (list.length === 0) {
@@ -100,7 +95,7 @@ function Game() {
         setIsWaldoFound(true)
         // console.log("Found Waldo")
         // console.log(isWaldoFound)
-        setTime(1)
+        setTime(4)
         openSubmitModal();
     }
 
@@ -134,8 +129,6 @@ function Game() {
         });
 
         setPlayerName("");
-        setUpdate(!update);
-        setSubmitModalOpen(false);
 
         console.log(timeString)
     }

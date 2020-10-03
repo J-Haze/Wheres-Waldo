@@ -16,7 +16,7 @@ function Game() {
     const [playerName, setPlayerName] = useState("");
     const [leaderModalOpen, setLeaderModalOpen] = useState(false);
     const [submitModalOpen, setSubmitModalOpen] = useState(false);
-    const [update, setUpdate] = useState(false);
+    const { update, setUpdate } = useState(false);
 
 
     const [location, setLocation] = useState("Waldo at the Beach");
@@ -79,11 +79,10 @@ function Game() {
             }
         }).catch(error => {
             // Handle the error
-            console.log("Error: Fetching Leaderboard")
         })
 
-
-    }, [update])
+    
+    }, [firebase])
 
     if (list === null) {
         beachList = (<li>Loading leaderboard...</li>)
@@ -134,7 +133,7 @@ function Game() {
         });
 
         setPlayerName("");
-        setUpdate(!update);
+        // setUpdate(!update);
         setSubmitModalOpen(false);
 
         console.log(timeString)
