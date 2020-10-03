@@ -19,7 +19,7 @@ function Game() {
     const [leaderModalOpen, setLeaderModalOpen] = useState(false);
     const [submitModalOpen, setSubmitModalOpen] = useState(false);
     const [update, setUpdate] = useState(false);
-    const [gameStart, setGameStart] = useState(false);
+    const [gameStart, setGameStart] = 
 
 
     const [location, setLocation] = useState("Waldo at the Beach");
@@ -128,10 +128,6 @@ function Game() {
         setSubmitModalOpen(true)
     }
 
-    function startGame() {
-        setGameStart(true);
-    }
-
     const submitTime = async () => {
         // e.preventDefault();
         if (playerName == "") {
@@ -186,9 +182,10 @@ function Game() {
                     isWaldoFound={isWaldoFound}
                     foundWaldo={foundWaldo}
                 /> :
-                <div className="start-button" onClick={startGame}>Start</div>
+                <div className="start-button"><div></div>
                 
                 }
+            <div>{count}</div>
         </div>
     )
 }

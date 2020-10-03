@@ -128,10 +128,6 @@ function Game() {
         setSubmitModalOpen(true)
     }
 
-    function startGame() {
-        setGameStart(true);
-    }
-
     const submitTime = async () => {
         // e.preventDefault();
         if (playerName == "") {
@@ -186,7 +182,7 @@ function Game() {
                     isWaldoFound={isWaldoFound}
                     foundWaldo={foundWaldo}
                 /> :
-                <div className="start-button" onClick={startGame}>Start</div>
+                <div className="start-button">Start</div>
                 
                 }
         </div>
