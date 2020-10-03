@@ -1,0 +1,80 @@
+body {
+    background-color:rgb(55, 55, 232);
+}
+
+/* div {
+    border: 1px solid black;
+} */
+
+#header{
+    height: 60px;
+    background-color:rgb(55, 55, 232);
+    color: whitesmoke;
+    /* justify-content: center;
+    align-items: center; */
+    
+    /* change font */
+    border: 1px solid white;
+}
+
+#header-container{
+    display: flex; 
+    /* justify-content: center;
+    align-items: center; */
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 1000px;
+}
+
+#title{
+    /* margin-left: 20px; */
+    margin-top: 10px;
+    font-size: 3em;
+}
+
+#head{
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+#leaderboard{
+    margin-right: auto;
+}
+
+#menu{
+
+    margin-right: auto;
+}
+
+.photo-container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    padding: 0px;
+    border: 1px solid black;
+}
+
+.photo{
+    width: 100%;
+}
+
+.waldo-beach{
+    position: absolute;
+    border: none;
+    margin-top: -95px;
+    margin-left: 237px;
+    width: 15px;
+    height: 35px;
+}
+
+.found{
+    border: 3px solid red;
+}
+
+
