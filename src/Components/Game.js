@@ -14,7 +14,9 @@ import badWords from "../../node_modules/bad-words";
 
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
-    const [time, setTime] = useState(1);
+    const [time, setTime] = useState(0);
+    const [seconds, setSeconds] = useState(0);
+    const [timerActive, setTimerActive] = useState(false);
     const [playerName, setPlayerName] = useState("");
     const [leaderModalOpen, setLeaderModalOpen] = useState(false);
     const [submitModalOpen, setSubmitModalOpen] = useState(false);
@@ -30,7 +32,7 @@ function Game() {
     const [list, setList] = useState(null)
     const leaderRef = firebase.firestore().collection(`players`)
     const query = leaderRef.orderBy("time").limit(5);
-    
+
 
     let timeString = "";
     let rounded = "";
@@ -88,8 +90,6 @@ function Game() {
             // Handle the error
             console.log("Error: Fetching Leaderboard")
         })
-
-
     }, [update])
 
     if (list === null) {
@@ -102,12 +102,45 @@ function Game() {
         })
     }
 
+    function startTimer() {
+        setTimerActive(true);
+    };
+
+    function stopTimer() {
+        setTimerActive(false);
+    };
+
+    function resetTimer() {
+        setTime(0)
+    };
+
+
+    useEffect(() => {
+        let interval = null;
+        if (timerActive) {
+            interval = setInterval(() => {
+                // setSeconds(Math.round((time + 0.1) * 10) / 10);
+                setTime((Math.round((time + 0.1) * 10) / 10));
+                // setTime(time);
+
+                // secs = time + 0.1;
+                // seconds = (secs).toFixed(1);
+                // setTime(seconds);
+                // rounded = (Math.round((time+.1) * 10) / 10).toFixed(1);
+                // timeDec = rounded.toFixed(1);
+            }, 100);
+        } else if (!timerActive && time !== 0) {
+            clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+    }, [timerActive, time]);
+
 
     function foundWaldo() {
-        setIsWaldoFound(true)
+        setIsWaldoFound(true);
         // console.log("Found Waldo")
         // console.log(isWaldoFound)
-        setTime(1)
+        stopTimer();
         openSubmitModal();
     }
 
@@ -130,6 +163,7 @@ function Game() {
 
     function startGame() {
         setGameStart(true);
+        startTimer();
     }
 
     const submitTime = async () => {
@@ -187,8 +221,8 @@ function Game() {
                     foundWaldo={foundWaldo}
                 /> :
                 <div className="start-button" onClick={startGame}>Start</div>
-                
-                }
+
+            }
         </div>
     )
 }
