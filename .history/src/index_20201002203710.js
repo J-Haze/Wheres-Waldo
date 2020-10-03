@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import FirebaseProvider from './utils/firebase.js';
-
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 
 // var firebaseConfig = {
 //   apiKey: "AIzaSyDmPVWlnNYu82nh4vhq2hMqqmR7mKHAmRc",
@@ -19,19 +17,12 @@ import FirebaseProvider from './utils/firebase.js';
 // };
 // firebase.initializeApp(firebaseConfig);
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
 ReactDOM.render(
-  <FirebaseProvider>
+  <React.StrictMode>
     <App />
-  </FirebaseProvider>,
+  </React.StrictMode>,
   document.getElementById('root')
-)
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

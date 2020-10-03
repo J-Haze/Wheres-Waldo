@@ -5,7 +5,6 @@ import Beach from "./Beach"
 
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
-    const [count, setCount] = useState(0);
 
     // useEffect(() => {
     //     const rootRef = firebase.database().ref().child('react');
@@ -21,7 +20,6 @@ function Game() {
         setIsWaldoFound(true)
         console.log("Found Waldo")
         console.log(isWaldoFound)
-        setCount(1)
     }
 
     return (
@@ -31,7 +29,6 @@ function Game() {
                 isWaldoFound={isWaldoFound}
                 foundWaldo={foundWaldo}
             />
-            <div>{count}</div>
         </div>
     )
 }

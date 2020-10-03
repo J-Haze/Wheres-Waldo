@@ -5,23 +5,18 @@ import Beach from "./Beach"
 
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
-    const [count, setCount] = useState(0);
 
-    // useEffect(() => {
-    //     const rootRef = firebase.database().ref().child('react');
-    //     const waldoRef = rootRef.child('waldo');
-    //     waldoRef.on('value', snap => {
-    //         // const [isWaldoFound, setIsWaldoFound] = useState(false);
-    //     });
-    // }, []
-    // );
+    useEffect(() => {
+        const rootRef = firebase.database().ref().child('react');
+        const
+    }
+    )
 
 
     function foundWaldo() {
         setIsWaldoFound(true)
         console.log("Found Waldo")
         console.log(isWaldoFound)
-        setCount(1)
     }
 
     return (
@@ -31,7 +26,6 @@ function Game() {
                 isWaldoFound={isWaldoFound}
                 foundWaldo={foundWaldo}
             />
-            <div>{count}</div>
         </div>
     )
 }
