@@ -4,19 +4,19 @@ import Header from "./Header"
 import Beach from "./Beach"
 
 function Game() {
-    const [isWaldoFound, setIsWaldoFound] = useState(false);
-
+    [waldoFound, setWaldoFound] = useState(false);
+    
     function foundWaldo() {
-        setIsWaldoFound(true)
+        setWaldoFound(true)
         console.log("Found Waldo")
-        console.log(isWaldoFound)
     }
+
 
     return (
         <div>
             <Header />
             <Beach 
-                isWaldoFound={isWaldoFound}
+                waldoStatus={waldoStatus}
                 foundWaldo={foundWaldo}
             />
         </div>

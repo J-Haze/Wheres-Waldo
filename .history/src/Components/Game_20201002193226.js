@@ -9,7 +9,6 @@ function Game() {
     function foundWaldo() {
         setIsWaldoFound(true)
         console.log("Found Waldo")
-        console.log(isWaldoFound)
     }
 
     return (

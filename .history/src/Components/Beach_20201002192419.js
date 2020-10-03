@@ -12,11 +12,7 @@ function Beach(props) {
         <div>
             <div id="beach-container" className="photo-container">
                 <img id="beach-photo" className="photo" src={beachPhoto} />
-                {(props.isWaldoFound) ?
-                    <div className="waldo-beach found"></div>
-                    :
-                    <div className="waldo-beach" onClick={props.foundWaldo}> </div> 
-                }               
+                <div id={`waldo-beach${props.waldoStatus}`} onClick={props.foundWaldo}></div>
             </div>
 
         </div>

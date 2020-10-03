@@ -64,17 +64,19 @@ body {
     width: 100%;
 }
 
-.waldo-beach{
+#waldo-beach{
     position: absolute;
-    border: none;
+    /* top: 360px;
+    left: 238px; */
     margin-top: -95px;
     margin-left: 237px;
+    z-index: 2;
     width: 15px;
     height: 35px;
 }
 
 .found{
-    border: 3px solid red;
+   border: 3px solid red;
 }
 
 

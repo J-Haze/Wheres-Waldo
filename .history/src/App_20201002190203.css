@@ -7,7 +7,7 @@ body {
 } */
 
 #header{
-    height: 60px;
+    height: 80px;
     background-color:rgb(55, 55, 232);
     color: whitesmoke;
     /* justify-content: center;
@@ -34,10 +34,10 @@ body {
 }
 
 #head{
-    height: 50px;
+    height: 60px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 #leaderboard{
@@ -46,7 +46,7 @@ body {
 
 #menu{
 
-    margin-right: auto;
+    margin-right: 0px;
 }
 
 .photo-container{
@@ -64,17 +64,18 @@ body {
     width: 100%;
 }
 
-.waldo-beach{
+#waldo-beach{
+    border: 3px solid red;
     position: absolute;
-    border: none;
+    /* top: 360px;
+    left: 238px; */
     margin-top: -95px;
     margin-left: 237px;
+    z-index: 2;
     width: 15px;
     height: 35px;
 }
 
-.found{
-    border: 3px solid red;
-}
+
 
 
