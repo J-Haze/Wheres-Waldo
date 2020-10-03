@@ -5,12 +5,10 @@ import Beach from "./Beach";
 import LeaderModal from "./LeaderModal.js";
 import SubmitModal from "./SubmitModal.js";
 
+
 import { FirebaseContext } from '../utils/firebase'
 import 'firebase/firestore'
 import { set } from "date-fns";
-
-import badWords from "../../node_modules/bad-words";
-// const Filter = require(badWords);
 
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
@@ -34,11 +32,7 @@ function Game() {
     let timeString = "";
     let rounded = "";
     let timeDec = "";
-    let beachList;
-
-    const filter = new badWords();
-
-    console.log(filter)
+    let beachList
 
     // useEffect(() => {
     //     const rootRef = firebase.database().ref().child('react');
@@ -133,14 +127,6 @@ function Game() {
             alert("Please enter a valid name")
             return
         }
-
-        if (filter.isProfane(playerName)) {
-            alert("Watch your profanity")
-            setPlayerName("");
-            return
-        }
-
-
         rounded = Math.round(time * 10) / 10;
         timeDec = rounded.toFixed(1);
         timeString = `${timeDec} sec`;

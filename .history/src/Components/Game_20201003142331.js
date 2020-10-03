@@ -9,8 +9,8 @@ import { FirebaseContext } from '../utils/firebase'
 import 'firebase/firestore'
 import { set } from "date-fns";
 
-import badWords from "../../node_modules/bad-words";
-// const Filter = require(badWords);
+const Filter = require('bad-words');
+filter = new Filter();
 
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
@@ -34,11 +34,7 @@ function Game() {
     let timeString = "";
     let rounded = "";
     let timeDec = "";
-    let beachList;
-
-    const filter = new badWords();
-
-    console.log(filter)
+    let beachList
 
     // useEffect(() => {
     //     const rootRef = firebase.database().ref().child('react');
@@ -136,7 +132,7 @@ function Game() {
 
         if (filter.isProfane(playerName)) {
             alert("Watch your profanity")
-            setPlayerName("");
+            // setPlayerName("");
             return
         }
 
