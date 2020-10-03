@@ -1,0 +1,28 @@
+body {
+    background-color:rgb(55, 55, 232);
+}
+
+#header{
+    height: 80px;
+    background-color:rgb(55, 55, 232);
+    color: whitesmoke;
+    font-size: 2em;
+    /* change font */
+}
+
+
+
+.photo-container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    padding: 0px;
+    border: 1px solid black;
+}
+
+.photo{
+    width: 100%;
+}

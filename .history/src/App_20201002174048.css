@@ -1,0 +1,20 @@
+
+#header{
+    height: 100px;
+    background-color:rgb(55, 55, 232);
+}
+
+.photo-container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    padding: 0px;
+    border: 1px solid black;
+}
+
+.photo{
+    width: 100%;
+}

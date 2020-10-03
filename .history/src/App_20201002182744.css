@@ -2,51 +2,26 @@ body {
     background-color:rgb(55, 55, 232);
 }
 
-/* div {
-    border: 1px solid black;
-} */
-
 #header{
     height: 80px;
     background-color:rgb(55, 55, 232);
     color: whitesmoke;
-    /* justify-content: center;
-    align-items: center; */
-    
+    font-size: 2em;
     /* change font */
     border: 1px solid white;
 }
 
 #header-container{
     display: flex; 
-    /* justify-content: center;
-    align-items: center; */
-    margin-left: auto;
-    margin-right: auto;
-    height: 100%;
+    justify-content: center;
+    align-items: center;
     width: 1000px;
 }
 
 #title{
-    /* margin-left: 20px; */
-    margin-top: 10px;
-    font-size: 3em;
-}
-
-#head{
-    height: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-}
-
-#leaderboard{
-    margin-right: auto;
-}
-
-#menu{
-
-    margin-right: 0px;
+    margin-left: 20px;
+    margin-top: 40px;
+    border: solid 1px black;
 }
 
 .photo-container{

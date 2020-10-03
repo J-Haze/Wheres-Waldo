@@ -1,0 +1,17 @@
+
+div
+
+.photo-container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 0px;
+}
+
+.photo{
+    border: 1px solid black;
+    width: 80%;
+}
