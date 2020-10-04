@@ -5,7 +5,10 @@ import LeaderModal from "./LeaderModal.js";
 import SubmitModal from "./SubmitModal.js";
 
 import Beach from "./Beach.js";
-import Park from "./Park.js"
+import Park from "./Park.js";
+import Store from "./Store.js";
+import Castle from "./Castle.js";
+import Gold from "./Gold.js"
 
 import { FirebaseContext } from '../utils/firebase'
 import 'firebase/firestore'
@@ -19,13 +22,13 @@ function Game() {
     const [time, setTime] = useState(0);
     const [timerActive, setTimerActive] = useState(false);
     const [playerName, setPlayerName] = useState("");
-    const [leaderModalOpen, setLeaderModalOpen] = useState(true);
+    const [leaderModalOpen, setLeaderModalOpen] = useState(false);
     const [submitModalOpen, setSubmitModalOpen] = useState(false);
     const [update, setUpdate] = useState(false);
     // const [renderContent, setRenderContent] = useState("");
 
-    const [gameStart, setGameStart] = useState(false);
-    const [location, setLocation] = useState("beach");
+    const [gameStart, setGameStart] = useState(true);
+    const [location, setLocation] = useState("gold");
     // const [location, setLocation] = useState("beach");
 
     const firebase = useContext(FirebaseContext);
@@ -37,9 +40,19 @@ function Game() {
     const [parkList, setParkList] = useState(null);
     const parkRef = firebase.firestore().collection('park');
     const parkQuery = parkRef.orderBy("time").limit(5);
-    // const [parkData] = useCollectionData(parkQuery, {idField: 'id'});
 
-    // console.log(parkData)
+    const [storeList, setStoreList] = useState(null);
+    const storeRef = firebase.firestore().collection('store');
+    const storeQuery = storeRef.orderBy("time").limit(5);
+
+    const [castleList, setCastleList] = useState(null);
+    const castleRef = firebase.firestore().collection('castle');
+    const castleQuery = storeRef.orderBy("castle").limit(5);
+
+    const [goldList, setGoldList] = useState(null);
+    const goldRef = firebase.firestore().collection('gold');
+    const goldQuery = goldRef.orderBy("gold").limit(5);
+
 
     let timeString = "";
     let rounded = "";
@@ -107,12 +120,96 @@ function Game() {
         })
     }
 
+    //Retrieve Store Leaderboard
+    useEffect(() => {
+        storeQuery.get().then(snap => {
+            if (!snap) {
+                setStoreList(l => [])
+            } else {
+                let storePlayers = []
+                snap.forEach(player => {
+                    storePlayers.push({ key: player.id, ...player.data() })
+                    // storePlayers.push({ key: player.id, name: player.data('name'), time: player.data('time') })
+                })
+                setStoreList(l => storePlayers)
+            }
+        }).catch(error => {
+            // Handle the error
+            console.log("Error: Fetching Leaderboard")
+        })
+    }, [update])
+
+    let dispStoreList;
+    if (storeList === null) {
+        dispStoreList = (<li>Loading leaderboard...</li>)
+    } else if (storeList.length === 0) {
+        dispStoreList = (<li>No players yet.</li>)
+    } else {
+        dispStoreList = storeList.map(player => {
+            return (<li key={player.key}><div className="item-cont"><div className="list-name">{player.name}</div><div className="list-time">{player.time}</div></div></li>)
+        })
+    }
 
 
+    //Retrieve Castle Leaderboard
+    useEffect(() => {
+        castleQuery.get().then(snap => {
+            if (!snap) {
+                setCastleList(l => [])
+            } else {
+                let castlePlayers = []
+                snap.forEach(player => {
+                    castlePlayers.push({ key: player.id, ...player.data() })
+                    // castlePlayers.push({ key: player.id, name: player.data('name'), time: player.data('time') })
+                })
+                setCastleList(l => castlePlayers)
+            }
+        }).catch(error => {
+            // Handle the error
+            console.log("Error: Fetching Leaderboard")
+        })
+    }, [update])
 
+    let dispCastleList;
+    if (castleList === null) {
+        dispCastleList = (<li>Loading leaderboard...</li>)
+    } else if (castleList.length === 0) {
+        dispCastleList = (<li>No players yet.</li>)
+    } else {
+        dispCastleList = castleList.map(player => {
+            return (<li key={player.key}><div className="item-cont"><div className="list-name">{player.name}</div><div className="list-time">{player.time}</div></div></li>)
+        })
+    }
 
+    //Retrieve Gold Rush Leaderboard
+    useEffect(() => {
+        goldQuery.get().then(snap => {
+            if (!snap) {
+                setGoldList(l => [])
+            } else {
+                let goldPlayers = []
+                snap.forEach(player => {
+                    goldPlayers.push({ key: player.id, ...player.data() })
+                    // goldPlayers.push({ key: player.id, name: player.data('name'), time: player.data('time') })
+                })
+                setGoldList(l => goldPlayers)
+            }
+        }).catch(error => {
+            // Handle the error
+            console.log("Error: Fetching Leaderboard")
+        })
+    }, [update])
 
-
+    let dispGoldList;
+    if (goldList === null) {
+        dispGoldList = (<li>Loading leaderboard...</li>)
+    } else if (goldList.length === 0) {
+        dispGoldList = (<li>No players yet.</li>)
+    } else {
+        dispGoldList = goldList.map(player => {
+            return (<li key={player.key}><div className="item-cont"><div className="list-name">{player.name}</div><div className="list-time">{player.time}</div></div></li>)
+        })
+    }
 
     function startTimer() {
         setTimerActive(true);
@@ -197,6 +294,27 @@ function Game() {
             });
         }
 
+        if (location == "store") {
+            await storeRef.add({
+                time: timeString,
+                name: playerName
+            });
+        }
+
+        if (location == "castle") {
+            await castleRef.add({
+                time: timeString,
+                name: playerName
+            });
+        }
+
+        if (location == "gold") {
+            await goldRef.add({
+                time: timeString,
+                name: playerName
+            });
+        }
+
         setPlayerName("");
         setUpdate(!update);
         setSubmitModalOpen(false);
@@ -230,6 +348,9 @@ function Game() {
                 hideLeaderModal={hideLeaderModal}
                 dispBeachList={dispBeachList}
                 dispParkList={dispParkList}
+                dispStoreList={dispStoreList}
+                dispCastleList={dispCastleList}
+                dispGoldList={dispGoldList}
             />}
             {submitModalOpen && <SubmitModal
                 time={time}
@@ -250,11 +371,29 @@ function Game() {
                         foundWaldo={foundWaldo}
                         location={location}
                     /> :
-                    <Park
-                        isWaldoFound={isWaldoFound}
-                        foundWaldo={foundWaldo}
-                        location={location}
-                    />
+                    (location == "store") ?
+                        <Store
+                            isWaldoFound={isWaldoFound}
+                            foundWaldo={foundWaldo}
+                            location={location}
+                        /> :
+                        (location == "castle") ?
+                            <Castle
+                                isWaldoFound={isWaldoFound}
+                                foundWaldo={foundWaldo}
+                                location={location}
+                            /> :
+                            (location == "gold") ?
+                            <Gold
+                                isWaldoFound={isWaldoFound}
+                                foundWaldo={foundWaldo}
+                                location={location}
+                            /> :
+                            <Park
+                                isWaldoFound={isWaldoFound}
+                                foundWaldo={foundWaldo}
+                                location={location}
+                            />
             }
 
         </div>

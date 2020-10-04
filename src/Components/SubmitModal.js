@@ -6,8 +6,14 @@ function SubmitModal(props) {
     let title
     if (props.location == "beach") {
         title = "Waldo at the Beach"
-    } else {
+    } else if (props.location == "park") {
         title = "Waldo at the Amusement Park"
+    } else if (props.location == "store") {
+        title = "Waldo goes Shopping"
+    } else if (props.location == "castle") {
+        title = "Renaissance Waldo"
+    } else if (props.location == "gold") {
+        title = "Waldo Strikes Gold"
     }
 
     return (

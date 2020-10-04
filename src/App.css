@@ -114,6 +114,36 @@ body {
     height: 25px;
 }
 
+.waldo-store{
+    position: absolute;
+    border: none;
+    /* border: 3px solid blue; */
+    margin-top: -373px;
+    margin-left: -155px;
+    width: 22px;
+    height: 33px;
+}
+
+.waldo-castle{
+    position: absolute;
+    border: none;
+    /* border: 3px solid blue; */
+    margin-top: 493px;
+    margin-left: -872px;
+    width: 22px;
+    height: 40px;
+}
+
+.waldo-gold{
+    position: absolute;
+    border: none;
+    /* border: 3px solid blue; */
+    margin-top: -126px;
+    margin-left: -620px;
+    width: 17px;
+    height: 38px;
+}
+
 .found{
     border: 3px solid red;
 }

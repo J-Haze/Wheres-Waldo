@@ -23,7 +23,35 @@ function LeaderModal(props) {
                     <ol id="park-list" className="leader-list">{props.dispParkList}</ol>
                 </div>
             </div>)
+    } else if (props.location == "store") {
+        renderLeaderboard =
+            (<div>
+                <div> Waldo goes Shopping </div>
+                <div id="leaderboard-title"> Leaderboard: </div>
+                <div id="leader-list-container">
+                    <ol id="store-list" className="leader-list">{props.dispStoreList}</ol>
+                </div>
+            </div>)
+    } else if (props.location == "castle") {
+        renderLeaderboard =
+            (<div>
+                <div>Renaissance Waldo</div>
+                <div id="leaderboard-title"> Leaderboard: </div>
+                <div id="leader-list-container">
+                    <ol id="store-list" className="leader-list">{props.dispCastleList}</ol>
+                </div>
+            </div>)
+    } else if (props.location == "gold") {
+        renderLeaderboard =
+            (<div>
+                <div>Waldo Strikes Gold</div>
+                <div id="leaderboard-title"> Leaderboard: </div>
+                <div id="leader-list-container">
+                    <ol id="store-list" className="leader-list">{props.dispGoldList}</ol>
+                </div>
+            </div>)
     }
+
 
     return (
         <div className="modal" onClick={() => { props.hideLeaderModal() }}>
@@ -33,6 +61,7 @@ function LeaderModal(props) {
             </div>
         </div>
     )
+
 }
 
 export default LeaderModal;

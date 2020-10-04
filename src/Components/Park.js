@@ -4,7 +4,6 @@ import parkPhoto from "../assets/theme-park.jpg";
 
 function Park(props) {
 
-    console.log("here", props.isWaldoFound, props.location)
     return (
         <div>
             <div id="park-container" className="photo-container">
