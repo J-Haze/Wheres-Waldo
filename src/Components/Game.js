@@ -27,7 +27,7 @@ function Game() {
     const [update, setUpdate] = useState(false);
     // const [renderContent, setRenderContent] = useState("");
 
-    const [gameStart, setGameStart] = useState(true);
+    const [gameStart, setGameStart] = useState(false);
     const [location, setLocation] = useState("gold");
     // const [location, setLocation] = useState("beach");
 
@@ -47,11 +47,11 @@ function Game() {
 
     const [castleList, setCastleList] = useState(null);
     const castleRef = firebase.firestore().collection('castle');
-    const castleQuery = storeRef.orderBy("castle").limit(5);
+    const castleQuery = castleRef.orderBy("time").limit(5);
 
     const [goldList, setGoldList] = useState(null);
     const goldRef = firebase.firestore().collection('gold');
-    const goldQuery = goldRef.orderBy("gold").limit(5);
+    const goldQuery = goldRef.orderBy("time").limit(5);
 
 
     let timeString = "";
@@ -149,7 +149,6 @@ function Game() {
             return (<li key={player.key}><div className="item-cont"><div className="list-name">{player.name}</div><div className="list-time">{player.time}</div></div></li>)
         })
     }
-
 
     //Retrieve Castle Leaderboard
     useEffect(() => {
@@ -322,25 +321,6 @@ function Game() {
         console.log(timeString)
     }
 
-    // setRenderContent(<div className="start-button" onClick={startGame}>Start</div>);
-    // useEffect(() => {
-    //     if (!gameStart) {
-    //         setRenderContent(<div className="start-button" onClick={startGame}>Start</div>)
-    //     } else if (gameStart && location == "beach") {
-    //         setRenderContent(<Beach
-    //             isWaldoFound={isWaldoFound}
-    //             foundWaldo={foundWaldo}
-    //         />)
-    //     } else if (gameStart && location == "park") {
-    //         setRenderContent( <Park
-    //             isWaldoFound={isWaldoFound}
-    //             foundWaldo={foundWaldo}
-    //         />)
-    //     }
-    // }, []
-    // );
-
-
     return (
         <div>
             {leaderModalOpen && <LeaderModal
@@ -384,16 +364,16 @@ function Game() {
                                 location={location}
                             /> :
                             (location == "gold") ?
-                            <Gold
-                                isWaldoFound={isWaldoFound}
-                                foundWaldo={foundWaldo}
-                                location={location}
-                            /> :
-                            <Park
-                                isWaldoFound={isWaldoFound}
-                                foundWaldo={foundWaldo}
-                                location={location}
-                            />
+                                <Gold
+                                    isWaldoFound={isWaldoFound}
+                                    foundWaldo={foundWaldo}
+                                    location={location}
+                                /> :
+                                <Park
+                                    isWaldoFound={isWaldoFound}
+                                    foundWaldo={foundWaldo}
+                                    location={location}
+                                />
             }
 
         </div>
