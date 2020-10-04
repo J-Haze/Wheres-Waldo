@@ -8,7 +8,7 @@ function LeaderModal(props) {
     if (props.location == "beach") {
         renderLeaderboard =
             (<div>
-                <div> Waldo at the Beach </div>
+                <div>Waldo at the Beach</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="beach-list" className="leader-list">{props.dispBeachList}</ol>
@@ -17,7 +17,7 @@ function LeaderModal(props) {
     } else if (props.location == "park") {
         renderLeaderboard =
             (<div>
-                <div> Waldo at the Amusement Park </div>
+                <div>Waldo at the Fair</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="park-list" className="leader-list">{props.dispParkList}</ol>
@@ -26,7 +26,7 @@ function LeaderModal(props) {
     } else if (props.location == "store") {
         renderLeaderboard =
             (<div>
-                <div> Waldo goes Shopping </div>
+                <div>Waldo goes Shopping</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="store-list" className="leader-list">{props.dispStoreList}</ol>
