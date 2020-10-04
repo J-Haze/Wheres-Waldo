@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCollectionData } from "react";
 import "../App.css";
 import Header from "./Header";
-import Beach from "./Beach";
 import LeaderModal from "./LeaderModal.js";
 import SubmitModal from "./SubmitModal.js";
+
+import Beach from "./Beach.js";
+import Park from "./Park.js"
 
 import { FirebaseContext } from '../utils/firebase'
 import 'firebase/firestore'
@@ -15,76 +17,48 @@ import badWords from "../../node_modules/bad-words";
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
     const [time, setTime] = useState(0);
-    const [seconds, setSeconds] = useState(0);
     const [timerActive, setTimerActive] = useState(false);
     const [playerName, setPlayerName] = useState("");
-    const [leaderModalOpen, setLeaderModalOpen] = useState(false);
+    const [leaderModalOpen, setLeaderModalOpen] = useState(true);
     const [submitModalOpen, setSubmitModalOpen] = useState(false);
     const [update, setUpdate] = useState(false);
+    // const [renderContent, setRenderContent] = useState("");
+
     const [gameStart, setGameStart] = useState(false);
+    const [location, setLocation] = useState("beach");
+    // const [location, setLocation] = useState("beach");
 
+    const firebase = useContext(FirebaseContext);
 
-    const [location, setLocation] = useState("Waldo at the Beach");
+    const [beachList, setBeachList] = useState(null);
+    const beachRef = firebase.firestore().collection('beach');
+    const beachQuery = beachRef.orderBy("time").limit(5);
 
+    const [parkList, setParkList] = useState(null);
+    const parkRef = firebase.firestore().collection('park');
+    const parkQuery = parkRef.orderBy("time").limit(5);
+    // const [parkData] = useCollectionData(parkQuery, {idField: 'id'});
 
-
-    const firebase = useContext(FirebaseContext)
-    const [list, setList] = useState(null)
-    const leaderRef = firebase.firestore().collection(`players`)
-    const query = leaderRef.orderBy("time").limit(5);
-
+    // console.log(parkData)
 
     let timeString = "";
     let rounded = "";
     let timeDec = "";
-    let beachList;
 
     const filter = new badWords();
 
-    console.log(filter)
 
-    // useEffect(() => {
-    //     const rootRef = firebase.database().ref().child('react');
-    //     const waldoRef = rootRef.child('waldo');
-    //     waldoRef.on('value', snap => {
-    //         // const [isWaldoFound, setIsWaldoFound] = useState(false);
-    //     });
-    // }, []
-    // );
-
-    // useEffect(() => {
-    //     ref.get().then(snap => {
-    //         console.log(snap)
-    //         // console.log(snap.count)
-    //         if (!snap) {
-    //             setList(l => [])
-    //             console.log("didn't snap")
-    //         } else {
-    //             console.log("snapped")
-    //             let states = []
-    //             snap.forEach(data => {
-    //                 states.push({ key: data.id, ...data.data() })
-    //             })
-    //             setList(l => states)
-    //             console.log(list)
-    //         }
-    //     }).catch(error => {
-    //         // Handle the error
-    //     }
-    //     )
-    //     console.log(list)
-    // }, [firebase])
-
+    //Retrieve Beach Leaderboard
     useEffect(() => {
-        query.get().then(snap => {
+        beachQuery.get().then(snap => {
             if (!snap) {
-                setList(l => [])
+                setBeachList(l => [])
             } else {
-                let players = []
+                let beachPlayers = []
                 snap.forEach(player => {
-                    players.push({ key: player.id, ...player.data() })
+                    beachPlayers.push({ key: player.id, ...player.data() })
                 })
-                setList(l => players)
+                setBeachList(l => beachPlayers)
             }
         }).catch(error => {
             // Handle the error
@@ -92,15 +66,53 @@ function Game() {
         })
     }, [update])
 
-    if (list === null) {
-        beachList = (<li>Loading leaderboard...</li>)
-    } else if (list.length === 0) {
-        beachList = (<li>No players yet.</li>)
+    let dispBeachList;
+    if (beachList === null) {
+        dispBeachList = (<li>Loading leaderboard...</li>)
+    } else if (beachList.length === 0) {
+        dispBeachList = (<li>No players yet.</li>)
     } else {
-        beachList = list.map(player => {
-            return (<li key={player.key}>{player.name} {player.time}</li>)
+        dispBeachList = beachList.map(player => {
+            return (<li key={player.key}><div className="item-cont"><div className="list-name">{player.name}</div><div className="list-time">{player.time}</div></div></li>)
         })
     }
+
+    //Retrieve Park Leaderboard
+    useEffect(() => {
+        parkQuery.get().then(snap => {
+            if (!snap) {
+                setParkList(l => [])
+            } else {
+                let parkPlayers = []
+                snap.forEach(player => {
+                    parkPlayers.push({ key: player.id, ...player.data() })
+                    // parkPlayers.push({ key: player.id, name: player.data('name'), time: player.data('time') })
+                })
+                setParkList(l => parkPlayers)
+            }
+        }).catch(error => {
+            // Handle the error
+            console.log("Error: Fetching Leaderboard")
+        })
+    }, [update])
+
+    let dispParkList;
+    if (parkList === null) {
+        dispParkList = (<li>Loading leaderboard...</li>)
+    } else if (parkList.length === 0) {
+        dispParkList = (<li>No players yet.</li>)
+    } else {
+        dispParkList = parkList.map(player => {
+            return (<li key={player.key}><div className="item-cont"><div className="list-name">{player.name}</div><div className="list-time">{player.time}</div></div></li>)
+        })
+    }
+
+
+
+
+
+
+
 
     function startTimer() {
         setTimerActive(true);
@@ -119,15 +131,7 @@ function Game() {
         let interval = null;
         if (timerActive) {
             interval = setInterval(() => {
-                // setSeconds(Math.round((time + 0.1) * 10) / 10);
                 setTime((Math.round((time + 0.1) * 10) / 10));
-                // setTime(time);
-
-                // secs = time + 0.1;
-                // seconds = (secs).toFixed(1);
-                // setTime(seconds);
-                // rounded = (Math.round((time+.1) * 10) / 10).toFixed(1);
-                // timeDec = rounded.toFixed(1);
             }, 100);
         } else if (!timerActive && time !== 0) {
             clearInterval(interval);
@@ -138,8 +142,6 @@ function Game() {
 
     function foundWaldo() {
         setIsWaldoFound(true);
-        // console.log("Found Waldo")
-        // console.log(isWaldoFound)
         stopTimer();
         openSubmitModal();
     }
@@ -151,7 +153,6 @@ function Game() {
     function openLeaderModal() {
         setLeaderModalOpen(true)
     }
-
 
     function hideSubmitModal() {
         setSubmitModalOpen(false)
@@ -167,7 +168,6 @@ function Game() {
     }
 
     const submitTime = async () => {
-        // e.preventDefault();
         if (playerName == "") {
             alert("Please enter a valid name")
             return
@@ -179,15 +179,23 @@ function Game() {
             return
         }
 
-
         rounded = Math.round(time * 10) / 10;
         timeDec = rounded.toFixed(1);
         timeString = `${timeDec} sec`;
 
-        await leaderRef.add({
-            time: timeString,
-            name: playerName
-        });
+        if (location == "beach") {
+            await beachRef.add({
+                time: timeString,
+                name: playerName
+            });
+        }
+
+        if (location == "park") {
+            await parkRef.add({
+                time: timeString,
+                name: playerName
+            });
+        }
 
         setPlayerName("");
         setUpdate(!update);
@@ -196,12 +204,32 @@ function Game() {
         console.log(timeString)
     }
 
+    // setRenderContent(<div className="start-button" onClick={startGame}>Start</div>);
+    // useEffect(() => {
+    //     if (!gameStart) {
+    //         setRenderContent(<div className="start-button" onClick={startGame}>Start</div>)
+    //     } else if (gameStart && location == "beach") {
+    //         setRenderContent(<Beach
+    //             isWaldoFound={isWaldoFound}
+    //             foundWaldo={foundWaldo}
+    //         />)
+    //     } else if (gameStart && location == "park") {
+    //         setRenderContent( <Park
+    //             isWaldoFound={isWaldoFound}
+    //             foundWaldo={foundWaldo}
+    //         />)
+    //     }
+    // }, []
+    // );
+
+
     return (
         <div>
             {leaderModalOpen && <LeaderModal
                 location={location}
                 hideLeaderModal={hideLeaderModal}
-                beachList={beachList}
+                dispBeachList={dispBeachList}
+                dispParkList={dispParkList}
             />}
             {submitModalOpen && <SubmitModal
                 time={time}
@@ -215,14 +243,20 @@ function Game() {
                 time={time}
                 openLeaderModal={openLeaderModal}
             />
-            {gameStart ?
-                <Beach
-                    isWaldoFound={isWaldoFound}
-                    foundWaldo={foundWaldo}
-                /> :
-                <div className="start-button" onClick={startGame}>Start</div>
-
+            {(!gameStart) ? <div className="start-button" onClick={startGame}>Start</div> :
+                (location == "beach") ?
+                    <Beach
+                        isWaldoFound={isWaldoFound}
+                        foundWaldo={foundWaldo}
+                        location={location}
+                    /> :
+                    <Park
+                        isWaldoFound={isWaldoFound}
+                        foundWaldo={foundWaldo}
+                        location={location}
+                    />
             }
+
         </div>
     )
 }

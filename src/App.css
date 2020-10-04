@@ -53,12 +53,13 @@ body {
     height: 30px;
     width: 100px;
     border: rgb(55, 55, 232);
+    margin-left: 2px;
 }
 
 #leaderboard:hover{
     cursor: pointer;
     border: 1px solid white;
-    
+    margin-left: 0px;
 }
 
 #menu{
@@ -70,12 +71,13 @@ body {
     height: 30px;
     width: 100px;
     border:rgb(55, 55, 232);
+    margin-left: 2px;
 }
 
 #menu:hover{
     cursor: pointer;
     border: 1px solid white;
-    
+    margin-left: 0px;
 }
 
 .photo-container{
@@ -100,6 +102,16 @@ body {
     margin-left: 237px;
     width: 15px;
     height: 35px;
+}
+
+.waldo-park{
+    position: absolute;
+    border: none;
+    /* border: none; */
+    margin-top: 27px;
+    margin-left: 476px;
+    width: 19px;
+    height: 25px;
 }
 
 .found{
@@ -156,10 +168,43 @@ body {
     border: 1px solid black;
 }
 
+#leaderboard-title{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+.leader-list-container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .leader-list{
     border: 1px solid black;
-    margin-left: -20px;
+    /* margin-left: -20px; */
+    width: 200px;
 }
+
+.item-cont{
+    display: flex;
+}
+
+.list-name{
+
+}
+
+.list-time{
+    margin-left: auto;
+    margin-right: 0px;
+    /* border: 1px solid black; */
+}
+
 
 #time-title{
     margin-top: 5px;
