@@ -3,7 +3,6 @@ import "../App.css";
 
 function PlaceCard(props) {
 
-
     return (
         <div id={props.title} className="card">
             <div className="card-title"> {props.title} </div>
@@ -13,8 +12,6 @@ function PlaceCard(props) {
             </div>
             <img className="card-image" src={props.image} />
         </div>
-
-
     )
 
 }

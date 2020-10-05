@@ -16,7 +16,7 @@ function LeaderModal(props) {
     } else if (props.location == "park") {
         renderLeaderboard =
             (<div className="leader-container">
-            <div className="leader-title">Waldo at the Fair</div>
+                <div className="leader-title">Waldo at the Fair</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="park-list" className="leader-list">{props.dispParkList}</ol>
@@ -25,7 +25,7 @@ function LeaderModal(props) {
     } else if (props.location == "store") {
         renderLeaderboard =
             (<div className="leader-container">
-            <div className="leader-title">Waldo goes Shopping</div>
+                <div className="leader-title">Waldo goes Shopping</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="store-list" className="leader-list">{props.dispStoreList}</ol>
@@ -34,7 +34,7 @@ function LeaderModal(props) {
     } else if (props.location == "castle") {
         renderLeaderboard =
             (<div className="leader-container">
-            <div className="leader-title">Renaissance Waldo</div>
+                <div className="leader-title">Renaissance Waldo</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="store-list" className="leader-list">{props.dispCastleList}</ol>
@@ -43,14 +43,13 @@ function LeaderModal(props) {
     } else if (props.location == "gold") {
         renderLeaderboard =
             (<div className="leader-container">
-            <div className="leader-title">Waldo Strikes Gold</div>
+                <div className="leader-title">Waldo Strikes Gold</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="store-list" className="leader-list">{props.dispGoldList}</ol>
                 </div>
             </div>)
     }
-
 
     return (
         <div className="modal" onClick={() => { props.hideLeaderModal() }}>

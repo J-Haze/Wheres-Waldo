@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCollectionData } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../App.css";
 import Header from "./Header";
 import LeaderModal from "./LeaderModal.js";
@@ -15,10 +15,8 @@ import Gold from "./Gold.js"
 
 import { FirebaseContext } from '../utils/firebase'
 import 'firebase/firestore'
-import { set } from "date-fns";
 
 import badWords from "../../node_modules/bad-words";
-// const Filter = require(badWords);
 
 function Game() {
     const [isWaldoFound, setIsWaldoFound] = useState(false);
@@ -29,7 +27,6 @@ function Game() {
     const [submitModalOpen, setSubmitModalOpen] = useState(false);
     const [update, setUpdate] = useState(false);
     const [menuOpen, setMenuOpen] = useState(true);
-    // const [menuOpen, setMenuOpen] = useState(false);
 
     const [gameStart, setGameStart] = useState(false);
     const [location, setLocation] = useState("beach");
@@ -57,13 +54,11 @@ function Game() {
     const goldRef = firebase.firestore().collection('gold');
     const goldQuery = goldRef.orderBy("time").limit(5);
 
-
     let timeString = "";
     let rounded = "";
     let timeDec = "";
 
     const filter = new badWords();
-
 
     //Retrieve Beach Leaderboard
     useEffect(() => {
@@ -103,7 +98,6 @@ function Game() {
                 let parkPlayers = []
                 snap.forEach(player => {
                     parkPlayers.push({ key: player.id, ...player.data() })
-                    // parkPlayers.push({ key: player.id, name: player.data('name'), time: player.data('time') })
                 })
                 setParkList(l => parkPlayers)
             }
@@ -133,7 +127,6 @@ function Game() {
                 let storePlayers = []
                 snap.forEach(player => {
                     storePlayers.push({ key: player.id, ...player.data() })
-                    // storePlayers.push({ key: player.id, name: player.data('name'), time: player.data('time') })
                 })
                 setStoreList(l => storePlayers)
             }
@@ -163,7 +156,6 @@ function Game() {
                 let castlePlayers = []
                 snap.forEach(player => {
                     castlePlayers.push({ key: player.id, ...player.data() })
-                    // castlePlayers.push({ key: player.id, name: player.data('name'), time: player.data('time') })
                 })
                 setCastleList(l => castlePlayers)
             }
@@ -193,7 +185,6 @@ function Game() {
                 let goldPlayers = []
                 snap.forEach(player => {
                     goldPlayers.push({ key: player.id, ...player.data() })
-                    // goldPlayers.push({ key: player.id, name: player.data('name'), time: player.data('time') })
                 })
                 setGoldList(l => goldPlayers)
             }
@@ -240,7 +231,6 @@ function Game() {
         return () => clearInterval(interval);
     }, [timerActive, time]);
 
-
     function foundWaldo() {
         setIsWaldoFound(true);
         stopTimer();
@@ -270,7 +260,7 @@ function Game() {
 
     const submitTime = async () => {
         if (playerName == "") {
-            alert("Please enter a valid name")
+            alert("Please enter a name")
             return
         }
 
@@ -322,8 +312,6 @@ function Game() {
         setPlayerName("");
         setUpdate(!update);
         setSubmitModalOpen(false);
-
-        console.log(timeString)
     }
 
     function toMenu() {
@@ -333,12 +321,6 @@ function Game() {
         setMenuOpen(true)
     }
 
-    // function playBeach() {
-    //     setLocation("beach")
-    //     setMenuOpen(false)
-    // }
-
-    // const play = (location) => {
     function play(location) {
         setLocation(location);
         setMenuOpen(false);
@@ -348,7 +330,6 @@ function Game() {
         setLocation(location);
         openLeaderModal(false);
     }
-
 
     useEffect(() => {
         if (location == "beach") {
@@ -397,7 +378,6 @@ function Game() {
             />}
             {menuOpen ?
                 <Menu
-                    // playBeach={playBeach}
                     places={places}
                 /> :
                 <div>

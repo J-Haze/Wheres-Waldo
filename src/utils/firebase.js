@@ -1,4 +1,3 @@
-// utils/firebase.js
 import React, { createContext } from 'react'
 import app from 'firebase/app'
 

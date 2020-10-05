@@ -14,7 +14,6 @@ function Park(props) {
                     <div className="waldo-park" onClick={props.foundWaldo}> </div>
                 }
             </div>
-
         </div>
     )
 }

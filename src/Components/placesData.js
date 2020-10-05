@@ -39,18 +39,3 @@ const placesData = [
 ]
 
 export default placesData;
-
-
-
-
-// if (location == "beach") {
-//     setTitle("Waldo at the Beach")
-// } else if (location == "park") {
-//     setTitle("Waldo at the Fair")
-// } else if (location == "store") {
-//     setTitle("Waldo goes Shopping")
-// } else if (location == "castle") {
-//     setTitle("Renaissance Waldo")
-// } else if (location == "gold") {
-//     setTitle("Waldo Strikes Gold")
-// }

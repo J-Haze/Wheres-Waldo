@@ -2,15 +2,9 @@ body {
     background-color:rgb(55, 55, 232);
 }
 
-/* div {
-    border: 1px solid black;
-} */
-
 #header{
     height: 60px;
-    /* background-color:rgb(55, 55, 232); */
     color: whitesmoke;
-    /* border: 1px solid white; */
 }
 
 #header-container{
@@ -24,8 +18,6 @@ body {
 }
 
 #title{
-    /* margin-left: 20px; */
-    /* margin-top: 10px; */
     font-size: 3em;
 }
 
@@ -33,7 +25,6 @@ body {
     height: 50px;
     margin-left: auto;
     margin-right: auto;
-    /* margin-top: 5px; */
 }
 
 #time-box{
@@ -107,7 +98,6 @@ body {
 .waldo-park{
     position: absolute;
     border: none;
-    /* border: none; */
     margin-top: 27px;
     margin-left: 476px;
     width: 19px;
@@ -117,7 +107,6 @@ body {
 .waldo-store{
     position: absolute;
     border: none;
-    /* border: 3px solid blue; */
     margin-top: -373px;
     margin-left: -155px;
     width: 22px;
@@ -127,7 +116,6 @@ body {
 .waldo-castle{
     position: absolute;
     border: none;
-    /* border: 3px solid blue; */
     margin-top: 493px;
     margin-left: -872px;
     width: 22px;
@@ -137,7 +125,6 @@ body {
 .waldo-gold{
     position: absolute;
     border: none;
-    /* border: 3px solid blue; */
     margin-top: -126px;
     margin-left: -620px;
     width: 17px;
@@ -156,7 +143,6 @@ body {
     left: 0;
     top: 0;
     width: 100%;
-    /* min-width: 600px; */
     height: 100vh;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
@@ -199,18 +185,12 @@ body {
     font-size: 1.6em;
 }
 
-
-/* #leader-list-container{
-    border: 1px solid black;
-} */
-
 #leaderboard-title{
     display: flex; 
     justify-content: center;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    /* border: 1px solid black; */
     margin-top: 10px;
     font-size: 90%;
 }
@@ -225,8 +205,6 @@ body {
 }
 
 .leader-list{
-    /* border: 1px solid black; */
-    /* margin-left: -20px; */
     width: 200px;
     font-size: 80%;
 }
@@ -235,14 +213,9 @@ body {
     display: flex;
 }
 
-.list-name{
-
-}
-
 .list-time{
     margin-left: auto;
     margin-right: 0px;
-    /* border: 1px solid black; */
 }
 
 
@@ -252,7 +225,6 @@ body {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    /* border: 1px solid black; */
     margin-top: 10px;
     font-size: 1.6em;
 }
@@ -311,17 +283,14 @@ body {
 }
 
 /* Code for menu */
-
   #menu-content{
     display: flex;
     flex-direction: column;
-    /* background-color: #fefefe; */
     margin-left: auto;
     margin-right: auto;
     margin-top: 1vh;
     padding: 30px;
     padding-top: 0px;
-    /* border: 1px solid #888; */
     width: 600px;
     justify-content: center;
     align-items: center;
@@ -335,8 +304,6 @@ body {
   }
 
   #menu-title{
-    /* margin-left: 20px; */
-    /* margin-top: 10px; */
     font-size: 3em;
 }
 
@@ -344,11 +311,9 @@ body {
     height: 50px;
     margin-left: 10px;;
     margin-right: auto;
-    /* margin-top: 5px; */
 }
 
 #row-two{
-    /* border: 1px solid black; */
     color: white;
     width: 350px;
     display: flex;
@@ -358,21 +323,10 @@ body {
 
 #all-cards{
     display: flex;
-    /* justify-content: space-between; */
-    /* border: 1px solid black; */
     width: 100vw;
     min-width: 1300px;
     margin-top: 30px;
 }
-
-
-/* .playButton{
-    border: 1px solid black;
-}
-
-.playButton:hover{
-    cursor: pointer;
-} */
 
 .card{
     display: flex;
@@ -397,7 +351,6 @@ body {
 }
 
 .btn{
-    /* border: 1px solid white; */
     font-size: 70%;
     text-align: center;
 }
@@ -422,6 +375,3 @@ body {
     border: 1px solid white;
     margin-bottom: 10px;
 }
-
-
-

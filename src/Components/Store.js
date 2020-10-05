@@ -14,7 +14,6 @@ function Store(props) {
                     <div className="waldo-store" onClick={props.foundWaldo}> </div>
                 }
             </div>
-
         </div>
     )
 }
