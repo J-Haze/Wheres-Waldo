@@ -3,12 +3,11 @@ import "../App.css";
 
 function LeaderModal(props) {
 
-    console.log(props.dispParkList)
     let renderLeaderboard = "";
     if (props.location == "beach") {
         renderLeaderboard =
-            (<div>
-                <div>Waldo at the Beach</div>
+            (<div className="leader-container">
+                <div className="leader-title">Waldo at the Beach</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="beach-list" className="leader-list">{props.dispBeachList}</ol>
@@ -16,8 +15,8 @@ function LeaderModal(props) {
             </div>)
     } else if (props.location == "park") {
         renderLeaderboard =
-            (<div>
-                <div>Waldo at the Fair</div>
+            (<div className="leader-container">
+            <div className="leader-title">Waldo at the Fair</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="park-list" className="leader-list">{props.dispParkList}</ol>
@@ -25,8 +24,8 @@ function LeaderModal(props) {
             </div>)
     } else if (props.location == "store") {
         renderLeaderboard =
-            (<div>
-                <div>Waldo goes Shopping</div>
+            (<div className="leader-container">
+            <div className="leader-title">Waldo goes Shopping</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="store-list" className="leader-list">{props.dispStoreList}</ol>
@@ -34,8 +33,8 @@ function LeaderModal(props) {
             </div>)
     } else if (props.location == "castle") {
         renderLeaderboard =
-            (<div>
-                <div>Renaissance Waldo</div>
+            (<div className="leader-container">
+            <div className="leader-title">Renaissance Waldo</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="store-list" className="leader-list">{props.dispCastleList}</ol>
@@ -43,8 +42,8 @@ function LeaderModal(props) {
             </div>)
     } else if (props.location == "gold") {
         renderLeaderboard =
-            (<div>
-                <div>Waldo Strikes Gold</div>
+            (<div className="leader-container">
+            <div className="leader-title">Waldo Strikes Gold</div>
                 <div id="leaderboard-title"> Leaderboard: </div>
                 <div id="leader-list-container">
                     <ol id="store-list" className="leader-list">{props.dispGoldList}</ol>

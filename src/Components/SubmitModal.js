@@ -20,10 +20,10 @@ function SubmitModal(props) {
         <div className="modal">
             <div id="submit-modal" className="modal-content" onClick={(event) => { event.stopPropagation() }}>
                 <span className="close" onClick={() => { props.hideSubmitModal() }}>&times;</span>
-                <div> {title} </div>
+                <div id="submit-title"> {title} </div>
                 <div id="time-title">Time: {props.time}</div>
-                <input value={props.playerName} onChange={(e) => props.setPlayerName(e.target.value)} />
-                <div id="submit-time" onClick={() => { props.submitTime() }}> Submit </div>
+                <input id="input" placeholder="Enter Name" value={props.playerName} onChange={(e) => props.setPlayerName(e.target.value)} />
+                <div id="submit-time" onClick={() => { props.submitTime() }}> Submit Score</div>
             </div>
         </div>
     )

@@ -28,12 +28,11 @@ function Game() {
     const [leaderModalOpen, setLeaderModalOpen] = useState(false);
     const [submitModalOpen, setSubmitModalOpen] = useState(false);
     const [update, setUpdate] = useState(false);
-    // const [renderContent, setRenderContent] = useState("");
     const [menuOpen, setMenuOpen] = useState(true);
+    // const [menuOpen, setMenuOpen] = useState(false);
 
     const [gameStart, setGameStart] = useState(false);
-    const [location, setLocation] = useState("gold");
-    // const [location, setLocation] = useState("beach");
+    const [location, setLocation] = useState("beach");
     const [title, setTitle] = useState("");
 
     const firebase = useContext(FirebaseContext);
@@ -224,6 +223,7 @@ function Game() {
     };
 
     function resetTimer() {
+        setTimerActive(false);
         setTime(0)
     };
 
@@ -327,6 +327,9 @@ function Game() {
     }
 
     function toMenu() {
+        resetTimer();
+        setIsWaldoFound(false);
+        setGameStart(false);
         setMenuOpen(true)
     }
 
