@@ -10,7 +10,7 @@ body {
     height: 60px;
     /* background-color:rgb(55, 55, 232); */
     color: whitesmoke;
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 #header-container{
@@ -250,6 +250,18 @@ body {
     cursor: pointer;
 }
 
+#start-title{
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 1000px;
+    font-size: 2em;
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+}
+
 .start-button{
     display: flex;
     background-color: #fefefe;
@@ -257,14 +269,128 @@ body {
     height: 50px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     justify-content: center;
     align-items: center;
     font-size: 2em;
 }
 
-.start-button{
+.start-button:hover{
     cursor: pointer;
 }
+
+/* Code for menu */
+
+  #menu-content{
+    display: flex;
+    flex-direction: column;
+    /* background-color: #fefefe; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1vh;
+    padding: 30px;
+    padding-top: 0px;
+    /* border: 1px solid #888; */
+    width: 600px;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    margin-top: 40px;
+  }
+
+  #top-row{
+      display: flex;
+      color: white;
+  }
+
+  #menu-title{
+    /* margin-left: 20px; */
+    /* margin-top: 10px; */
+    font-size: 3em;
+}
+
+#menu-head{
+    height: 50px;
+    margin-left: 10px;;
+    margin-right: auto;
+    /* margin-top: 5px; */
+}
+
+#row-two{
+    /* border: 1px solid black; */
+    color: white;
+    width: 350px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#all-cards{
+    display: flex;
+    /* justify-content: space-between; */
+    /* border: 1px solid black; */
+    width: 100vw;
+    min-width: 1300px;
+    margin-top: 30px;
+}
+
+
+/* .playButton{
+    border: 1px solid black;
+}
+
+.playButton:hover{
+    cursor: pointer;
+} */
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    color: white;
+    font-size: 1.7em;
+    width: 250px;
+}
+
+.card-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.btn{
+    border: 1px solid white;
+    font-size: 70%;
+    text-align: center;
+}
+
+.card-play{
+    width: 40px;
+}
+
+.card-scores{
+width: 100px;
+}
+
+.btn:hover{
+    cursor: pointer;
+    color: rgb(55, 55, 232);
+    background-color: white;
+
+}
+
+.card-image{
+    width: 230px;
+    border: 1px solid white;
+    margin-bottom: 10px;
+}
+
 
 

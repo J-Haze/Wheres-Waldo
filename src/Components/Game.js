@@ -3,6 +3,9 @@ import "../App.css";
 import Header from "./Header";
 import LeaderModal from "./LeaderModal.js";
 import SubmitModal from "./SubmitModal.js";
+import Menu from "./Menu.js";
+import placesData from "./placesData.js";
+import PlaceCard from "./PlaceCard.js"
 
 import Beach from "./Beach.js";
 import Park from "./Park.js";
@@ -26,10 +29,12 @@ function Game() {
     const [submitModalOpen, setSubmitModalOpen] = useState(false);
     const [update, setUpdate] = useState(false);
     // const [renderContent, setRenderContent] = useState("");
+    const [menuOpen, setMenuOpen] = useState(true);
 
     const [gameStart, setGameStart] = useState(false);
     const [location, setLocation] = useState("gold");
     // const [location, setLocation] = useState("beach");
+    const [title, setTitle] = useState("");
 
     const firebase = useContext(FirebaseContext);
 
@@ -321,6 +326,53 @@ function Game() {
         console.log(timeString)
     }
 
+    function toMenu() {
+        setMenuOpen(true)
+    }
+
+    // function playBeach() {
+    //     setLocation("beach")
+    //     setMenuOpen(false)
+    // }
+
+    // const play = (location) => {
+    function play(location) {
+        setLocation(location);
+        setMenuOpen(false);
+    }
+
+    function scores(location) {
+        setLocation(location);
+        openLeaderModal(false);
+    }
+
+
+    useEffect(() => {
+        if (location == "beach") {
+            setTitle("Waldo at the Beach")
+        } else if (location == "park") {
+            setTitle("Waldo at the Fair")
+        } else if (location == "store") {
+            setTitle("Waldo goes Shopping")
+        } else if (location == "castle") {
+            setTitle("Renaissance Waldo")
+        } else if (location == "gold") {
+            setTitle("Waldo Strikes Gold")
+        }
+    }, [location]);
+
+
+    const places = placesData.map(place =>
+        <PlaceCard
+            key={place.id}
+            title={place.title}
+            image={place.image}
+            location={place.location}
+            play={play}
+            scores={scores}
+        />
+    );
+
     return (
         <div>
             {leaderModalOpen && <LeaderModal
@@ -340,41 +392,53 @@ function Game() {
                 playerName={playerName}
                 setPlayerName={setPlayerName}
             />}
-            <Header
-                time={time}
-                openLeaderModal={openLeaderModal}
-            />
-            {(!gameStart) ? <div className="start-button" onClick={startGame}>Start</div> :
-                (location == "beach") ?
-                    <Beach
-                        isWaldoFound={isWaldoFound}
-                        foundWaldo={foundWaldo}
-                        location={location}
-                    /> :
-                    (location == "store") ?
-                        <Store
-                            isWaldoFound={isWaldoFound}
-                            foundWaldo={foundWaldo}
-                            location={location}
-                        /> :
-                        (location == "castle") ?
-                            <Castle
+            {menuOpen ?
+                <Menu
+                    // playBeach={playBeach}
+                    places={places}
+                /> :
+                <div>
+                    <Header
+                        time={time}
+                        openLeaderModal={openLeaderModal}
+                        toMenu={toMenu}
+                    />
+                    {(!gameStart) ?
+                        <div id="start-screen">
+                            <div id="start-title">{title}</div>
+                            <div className="start-button" onClick={startGame}>Start</div>
+                        </div> :
+                        (location == "beach") ?
+                            <Beach
                                 isWaldoFound={isWaldoFound}
                                 foundWaldo={foundWaldo}
                                 location={location}
                             /> :
-                            (location == "gold") ?
-                                <Gold
+                            (location == "store") ?
+                                <Store
                                     isWaldoFound={isWaldoFound}
                                     foundWaldo={foundWaldo}
                                     location={location}
                                 /> :
-                                <Park
-                                    isWaldoFound={isWaldoFound}
-                                    foundWaldo={foundWaldo}
-                                    location={location}
-                                />
-            }
+                                (location == "castle") ?
+                                    <Castle
+                                        isWaldoFound={isWaldoFound}
+                                        foundWaldo={foundWaldo}
+                                        location={location}
+                                    /> :
+                                    (location == "gold") ?
+                                        <Gold
+                                            isWaldoFound={isWaldoFound}
+                                            foundWaldo={foundWaldo}
+                                            location={location}
+                                        /> :
+                                        <Park
+                                            isWaldoFound={isWaldoFound}
+                                            foundWaldo={foundWaldo}
+                                            location={location}
+                                        />
+                    }
+                </div>}
 
         </div>
     )
