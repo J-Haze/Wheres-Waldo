@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/WheresWaldo/static/css/main.2c6b8e6d.chunk.css",
+    "main.js": "/WheresWaldo/static/js/main.98ee8548.chunk.js",
+    "main.js.map": "/WheresWaldo/static/js/main.98ee8548.chunk.js.map",
+    "runtime-main.js": "/WheresWaldo/static/js/runtime-main.e5690a35.js",
+    "runtime-main.js.map": "/WheresWaldo/static/js/runtime-main.e5690a35.js.map",
+    "static/js/2.9edaec90.chunk.js": "/WheresWaldo/static/js/2.9edaec90.chunk.js",
+    "static/js/2.9edaec90.chunk.js.map": "/WheresWaldo/static/js/2.9edaec90.chunk.js.map",
+    "index.html": "/WheresWaldo/index.html",
+    "precache-manifest.4ec10d66ac6d7806f7248fea342779f5.js": "/WheresWaldo/precache-manifest.4ec10d66ac6d7806f7248fea342779f5.js",
+    "service-worker.js": "/WheresWaldo/service-worker.js",
+    "static/css/main.2c6b8e6d.chunk.css.map": "/WheresWaldo/static/css/main.2c6b8e6d.chunk.css.map",
+    "static/js/2.9edaec90.chunk.js.LICENSE.txt": "/WheresWaldo/static/js/2.9edaec90.chunk.js.LICENSE.txt",
+    "static/media/beach.jpg": "/WheresWaldo/static/media/beach.4f649bce.jpg",
+    "static/media/castle.jpg": "/WheresWaldo/static/media/castle.dbabf0ec.jpg",
+    "static/media/goldrush.jpg": "/WheresWaldo/static/media/goldrush.bed23805.jpg",
+    "static/media/store.jpg": "/WheresWaldo/static/media/store.8fa2b3da.jpg",
+    "static/media/theme-park.jpg": "/WheresWaldo/static/media/theme-park.90bc6714.jpg",
+    "static/media/waldo.png": "/WheresWaldo/static/media/waldo.8adcc90d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e5690a35.js",
+    "static/js/2.9edaec90.chunk.js",
+    "static/css/main.2c6b8e6d.chunk.css",
+    "static/js/main.98ee8548.chunk.js"
+  ]
+}
