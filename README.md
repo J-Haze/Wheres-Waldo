@@ -1,3 +1,3 @@
-App Demo: https://j-haze.github.io/Wheres-Waldo/
+A 'Where's Waldo' Game
 
-Where's Waldo game.
+App Demo: https://j-haze.github.io/Wheres-Waldo/
