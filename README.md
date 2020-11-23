@@ -1,4 +1,4 @@
-## To-Do List
+## Where's Waldo
 App to play "Where's Waldo"
 
 🔗 **Live preview** of the app is [here](https://j-haze.github.io/Wheres-Waldo/).
