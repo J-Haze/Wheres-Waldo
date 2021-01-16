@@ -3,8 +3,9 @@ App to play "Where's Waldo"
 
 🔗 **Live preview** of the app is [here](https://j-haze.github.io/Wheres-Waldo/).
 
-### Purpose: ###
-Intergrate **React** front-end with **Firebase** back-end to create a **full stack web application**. The app lets you compete to find "Waldo" on various maps, and compare your time to others.
+### Description ###
+
+Intergrates **React** front-end with **Firebase** back-end to create a **full stack web application**. The app lets you compete to find "Waldo" on various maps, and compare your time with others.
 
 ### Features: ###
 
