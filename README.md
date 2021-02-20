@@ -5,7 +5,7 @@ App to play "Where's Waldo"
 
 ### Description ###
 
-Intergrates **React** front-end with **Firebase** back-end to create a **full stack web application**. The app lets you compete to find "Waldo" on various maps, and compare your time with others.
+Integrates **React** front-end with **Firebase** back-end to create a **full stack web application**. The app lets you compete to find "Waldo" on various maps, and compare your time with others.
 
 ### Features: ###
 
